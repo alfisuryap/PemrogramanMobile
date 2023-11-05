@@ -1,4 +1,6 @@
-import 'package:flutter/material.dart'; //tes
+import 'package:flutter/material.dart';
+import 'package:carousel_slider/carousel_slider.dart';
+import 'package:uts_mobileprogramming/history.dart';
 
 void main() {
   runApp(const MainApp());
@@ -10,40 +12,26 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      color: Color.fromARGB(255, 167, 167, 167),
       debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        body: Container(
-          decoration: BoxDecoration(
-            gradient: LinearGradient(
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
-              colors: [
-                Colors.grey,
-                Colors.white,
-              ],
-            ),
-          ),
-          child: HomeScreen(),
-        ),
-      ),
+      home: HomeScreen(),
     );
   }
 }
 
 final List<String> imgList = [
-  'https://images.unsplash.com/photo-1520342868574-5fa3804e551c?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=6ff92caffcdd63681a35134a6770ed3b&auto=format&fit=crop&w=1951&q=80',
-  'https://images.unsplash.com/photo-1522205408450-add114ad53fe?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=368f45b0888aeb0b7b08e3a1084d3ede&auto=format&fit=crop&w=1950&q=80',
-  'https://images.unsplash.com/photo-1519125323398-675f0ddb6308?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=94a1e718d89ca60a6337a6008341ca50&auto=format&fit=crop&w=1950&q=80',
-  'https://images.unsplash.com/photo-1523205771623-e0faa4d2813d?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=89719a0d55dd05e2deae4120227e6efc&auto=format&fit=crop&w=1953&q=80',
-  'https://images.unsplash.com/photo-1508704019882-f9cf40e475b4?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=8c6e5e3aba713b17aa1fe71ab4f0ae5b&auto=format&fit=crop&w=1352&q=80',
-  'https://images.unsplash.com/photo-1519985176271-adb1088fa94c?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=a0c8d632e977f94e5d312d9893258f59&auto=format&fit=crop&w=1355&q=80'
+  'https://cdn.linkaja.com/website/posts/March2022/1647938109-Pembayaran%20Resmi%20KP.jpg',
+  'https://www.astronauts.id/blog/wp-content/uploads/2022/10/Belanja-Hemat-di-Astro-Pakai-LinkAja-Langsung-Dapat-Cashback-Spesial.jpg',
+  'https://cdn.linkaja.com/website/posts/May2022/1653372317-WEB%20BANNER%20794x366%20(50).jpg',
+  'https://cdn.linkaja.com/website/posts/March2023/1678099933-HEADER%20ARTICLE%20592X342.jpg',
+  'https://cdn.linkaja.com/website/posts/March2022/1648723321-WEB%20BANNER%20794x366%20-%202022-03-31T173852.731.jpg',
 ];
 
 final List<Widget> imageSliders = imgList
     .map((item) => Container(
           margin: const EdgeInsets.all(5.0),
           child: ClipRRect(
-            borderRadius: const BorderRadius.all(Radius.circular(5.0)),
+            borderRadius: const BorderRadius.all(Radius.circular(5)),
             child: Image.network(item, fit: BoxFit.cover, width: 1000.0),
           ),
         ))
@@ -69,10 +57,44 @@ class HomeScreen extends StatelessWidget {
                   child: Image(
                     image: NetworkImage(
                         'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcToIhy4KyY-ALuwCR9Z3_zCTW--fU_3agJjOItWx2hLBA&s'),
-                    width: 36,
-                    height: 36,
+                    width: 38,
+                    height: 38,
                     fit: BoxFit.scaleDown,
                   ),
+                ),
+                Row(
+                  children: [
+                    Container(
+                      margin: EdgeInsets.only(right: 20, top: 20),
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(5.0),
+                      ),
+                      child: IconButton(
+                        icon: const Icon(
+                          Icons.percent,
+                          color: Colors.black,
+                        ),
+                        onPressed: () {},
+                      ),
+                    ),
+                    Container(
+                      margin: EdgeInsets.only(right: 20, top: 20),
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(5.0),
+                      ),
+                      child: IconButton(
+                        icon: const Icon(
+                          Icons.favorite,
+                          color: Colors.black,
+                        ),
+                        onPressed: () {
+                          // Tindakan saat tombol notifikasi ditekan
+                        },
+                      ),
+                    )
+                  ],
                 ),
               ],
             ),
@@ -80,8 +102,9 @@ class HomeScreen extends StatelessWidget {
               width: double.infinity,
               height: 140,
               decoration: BoxDecoration(
-                color: Colors.red,
-                border: Border.all(color: Colors.red, width: 2.0),
+                color: Color.fromARGB(255, 238, 50, 36),
+                border: Border.all(
+                    color: Color.fromARGB(255, 239, 43, 29), width: 2.0),
                 borderRadius: BorderRadius.circular(10.0),
               ),
               child: Column(
@@ -90,7 +113,7 @@ class HomeScreen extends StatelessWidget {
                   Container(
                     margin: EdgeInsets.all(10),
                     child: Text(
-                      'Hi, xxx',
+                      'Hi, Alfi Surya Pratama',
                       style: TextStyle(
                         color: Colors.white,
                       ),
@@ -103,7 +126,7 @@ class HomeScreen extends StatelessWidget {
                         Container(
                           margin: EdgeInsets.only(right: 5.0),
                           padding: EdgeInsets.all(10.0),
-                          width: 175,
+                          width: 150,
                           height: 75,
                           decoration: BoxDecoration(
                             color: Colors.white,
@@ -122,7 +145,7 @@ class HomeScreen extends StatelessWidget {
                               Row(
                                 children: [
                                   Text(
-                                    'Rp. 10.000.000',
+                                    'Rp. 220.000',
                                     style: TextStyle(
                                       color: Colors.black,
                                       fontWeight: FontWeight.bold,
@@ -136,7 +159,7 @@ class HomeScreen extends StatelessWidget {
                         ),
                         Container(
                           padding: EdgeInsets.all(15.0),
-                          width: 175,
+                          width: 150,
                           height: 75,
                           decoration: BoxDecoration(
                             color: Colors.white,
@@ -155,7 +178,7 @@ class HomeScreen extends StatelessWidget {
                               Row(
                                 children: [
                                   Text(
-                                    '0',
+                                    '70.000',
                                     style: TextStyle(
                                       color: Colors.black,
                                       fontWeight: FontWeight.bold,
@@ -184,21 +207,21 @@ class HomeScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Container(
-                    width: 80,
+                    width: 90,
                     child: Column(children: [
                       Icon(
-                        Icons.add_card_outlined,
-                        size: 25,
+                        Icons.add_card_rounded,
+                        size: 35,
                       ),
                       Text("TopUp"),
                     ]),
                   ),
                   Container(
-                    width: 80,
+                    width: 90,
                     child: Column(children: [
                       Icon(
-                        Icons.money,
-                        size: 25,
+                        Icons.account_balance_wallet_rounded,
+                        size: 35,
                       ),
                       Text(
                         "Send Money",
@@ -207,24 +230,220 @@ class HomeScreen extends StatelessWidget {
                     ]),
                   ),
                   Container(
-                    width: 80,
+                    width: 90,
                     child: Column(children: [
-                      Icon(Icons.airplane_ticket_outlined),
+                      Icon(
+                        Icons.confirmation_number_rounded,
+                        size: 35,
+                      ),
                       Text("Ticket Code"),
                     ]),
                   ),
                   Container(
-                    width: 80,
+                    width: 90,
                     child: Column(children: [
-                      Icon(Icons.airplane_ticket_outlined),
+                      Icon(
+                        Icons.apps_rounded,
+                        size: 35,
+                      ),
                       Text("See All"),
                     ]),
                   ),
                 ],
               ),
             ),
+            Container(
+              margin: EdgeInsets.all(10.0),
+              padding: EdgeInsets.all(5),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Container(
+                    width: 90,
+                    child: Column(children: [
+                      Icon(
+                        Icons.speaker_phone_sharp,
+                        size: 35,
+                      ),
+                      Text("Pulsa/Data"),
+                    ]),
+                  ),
+                  Container(
+                    width: 90,
+                    child: Column(children: [
+                      Icon(Icons.electric_bolt_rounded, size: 35),
+                      Text("Electricity"),
+                    ]),
+                  ),
+                  Container(
+                    width: 90,
+                    child: Column(children: [
+                      Icon(Icons.health_and_safety_rounded, size: 35),
+                      Text("BPJS"),
+                    ]),
+                  ),
+                  Container(
+                    width: 90,
+                    child: Column(children: [
+                      Icon(Icons.gamepad_rounded, size: 35),
+                      Text("mgames"),
+                    ]),
+                  ),
+                ],
+              ),
+            ),
+            Container(
+              margin: EdgeInsets.all(10),
+              padding: EdgeInsets.all(5),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Container(
+                    width: 90,
+                    child: Column(children: [
+                      Icon(Icons.connected_tv, size: 35),
+                      Text("Cable TV & Internet"),
+                    ]),
+                  ),
+                  Container(
+                    width: 90,
+                    child: Column(children: [
+                      Icon(Icons.water_drop, size: 35),
+                      Text("PDAM"),
+                    ]),
+                  ),
+                  Container(
+                    width: 90,
+                    child: Column(children: [
+                      Icon(Icons.credit_card, size: 35),
+                      Text(
+                        "Kartu Uang Elektronik",
+                        textAlign: TextAlign.center,
+                      ),
+                    ]),
+                  ),
+                  Container(
+                    width: 90,
+                    child: Column(children: [
+                      Icon(Icons.more_horiz_rounded, size: 35),
+                      Text("More"),
+                    ]),
+                  ),
+                ],
+              ),
+            ),
+            Container(
+              margin: EdgeInsets.all(10),
+              child: CarouselSlider(
+                options: CarouselOptions(
+                  height: 100.0,
+                  enlargeCenterPage: true,
+                  autoPlay: true,
+                  enlargeFactor: 0.2,
+                ),
+                items: imageSliders,
+              ),
+            ),
           ]),
         ],
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        backgroundColor: Colors.red,
+        foregroundColor: Colors.white,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+        child: const Icon(Icons.qr_code_2_outlined),
+      ),
+      bottomNavigationBar: BottomAppBar(
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          mainAxisSize: MainAxisSize.max,
+          children: [
+            NavIcon(
+              iconData: Icons.home_outlined,
+              name: "Home",
+              onTap: () {},
+            ),
+            NavIcon(
+              iconData: Icons.history,
+              name: "History",
+              onTap: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => History(),
+                  ),
+                );
+              },
+            ),
+            Padding(
+              padding: EdgeInsets.all(10),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Padding(
+                    padding: EdgeInsets.only(top: 25),
+                    child: Text(
+                      "Pay",
+                      style: TextStyle(
+                        color: Colors.grey,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  )
+                ],
+              ),
+            ),
+            NavIcon(
+              iconData: Icons.inbox_outlined,
+              name: "Inbox",
+            ),
+            NavIcon(
+              iconData: Icons.account_circle_outlined,
+              name: "Account",
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class NavIcon extends StatelessWidget {
+  final IconData iconData;
+  final String name;
+  final void Function()? onTap;
+
+  const NavIcon({
+    super.key,
+    required this.iconData,
+    required this.name,
+    this.onTap,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(10),
+      child: InkWell(
+        borderRadius: BorderRadius.circular(30),
+        onTap: onTap,
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Icon(
+              iconData,
+              color: Colors.grey,
+            ),
+            Text(
+              name,
+              style: const TextStyle(
+                color: Colors.grey,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
